@@ -1,16 +1,39 @@
 import express from "express";
-const srever = express();
+const server = express();
 const port = 3000;
-// srever.get=("/"(req, res)=>{
-// res.json({
-// name:"hello"
-// })
 
-srever.get("/", (req, res) => {
+// -----------1----------------
+
+// server.get("/", (req, res) => {
+//   res.status(200);
+//   res.json({
+//     name: "Hello",
+//     class: "BCA",
+//   });
+// });
+
+// -----------2----------------
+
+server.get("/", (req, res) => {
+  res.status(200);
   res.json({
-    name: "Hello",
+    name: "Muskan",
   });
 });
-srever.listen(port, () => {
-  console.log(`"Server Started on "${port}`);
+
+// -----------3----------------
+
+server.use(express.json());
+
+server.post("/Login", (req, res) => {
+  console.log(req.body);
+  res.status(200);
+  res.json({
+    name: "Hello",
+    class: "BCA",
+  });
+});
+
+server.listen(port, () => {
+  console.log(`Server Started on ${port}`);
 });
